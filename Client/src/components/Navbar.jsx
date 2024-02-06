@@ -8,8 +8,8 @@ export default function Navbar() {
                 JoyPlay Adventure
             </div>
             <div className="right">
-                <h4>Login</h4>
-                <h4>SignUp</h4>
+                <h3>Login</h3>
+                <h3>SignUp</h3>
             </div>
         </nav>
     </div>

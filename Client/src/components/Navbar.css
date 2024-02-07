@@ -1,0 +1,86 @@
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  position: fixed;
+  top: 3%;
+}
+.navbar {
+  width: 85vmax;
+  height: 10vmax;
+  background-color: #ffffff;
+  display: flex;
+  color: whitesmoke;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0 2vmax 0 1vmax;
+}
+.left-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vmax;
+  background-color: #ffffff;
+}
+.JoyPlay {
+  font-family: "Creepster", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vmax;
+  letter-spacing: 0.2vmax;
+  color: black;
+  background-color: #ffffff;
+}
+.JoyPlay span {
+  color: #6d0fe0;
+  background-color: #ffffff;
+  margin-left: 10px;
+}
+.right-nav {
+  display: flex;
+  justify-content: center;
+  gap: 5vmin;
+  background-color: #ffffff;
+}
+.login,
+.home,
+.about {
+  font-size: 1.5vmax;
+  font-family: "Creepster", system-ui;
+  letter-spacing: 0.2vmax;
+  background-color: #ffffff;
+  color: black;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  cursor: pointer;
+}
+
+.login::after,
+.home::after,
+.about::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6d0fe0; /* Adjust the color as needed */
+  transition: width 0.3s ease;
+}
+
+.login:hover,
+.home:hover,
+.about:hover {
+  color: #6d0fe0; /* Adjust the color as needed */
+}
+
+.login:hover::after,
+.home:hover::after,
+.about:hover::after {
+  width: 100%;
+}

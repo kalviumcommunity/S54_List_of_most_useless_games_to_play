@@ -1,17 +1,23 @@
-import React from 'react'
+import React from "react";
+import './Navbar.css'
 
-export default function Navbar() {
+const Navbar = () => {
   return (
-    <div className='nav' >
-        <nav className='navbar'>
-            <div className="left">
-                JoyPlay Adventure
-            </div>
-            <div className="right">
-                <h3>Login</h3>
-                <h3>SignUp</h3>
-            </div>
-        </nav>
+    <div className='navbar-container'>
+    <div className="navbar">
+      <div className="left-nav">
+      <div className='JoyPlay'>JoyPlay<span>Adventure</span></div>
+      </div>
+      <div className="right-nav">
+        <div className='home'>Home</div>
+        <div className='about'>About</div>
+        <div className='login'>Login</div>
+      </div>
     </div>
+    <div>
+    </div>
+  </div>
   )
-}
+};
+
+export default Navbar;

@@ -1,68 +1,8 @@
-* {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-body {
-  background-image: radial-gradient(
-    circle,
-    #dcc0cf,
-    #d7b9d1,
-    #cdb2d6,
-    #bfaddb,
-    #abaae1,
-    #9ab1eb,
-    #84b8f3,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
-}
-.navbar {
-  width: 80vmax;
-}
-.nav {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-nav {
-  display: flex;
-  border-radius: 2vmax;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
-  background-color: rgb(40, 255, 255);
-  -webkit-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.75);
-  padding: 0 2vmax;
-  height: 8vmax;
-  align-items: center;
-  margin-top: 1vmax;
-}
-.left {
-  font-size: 3vmax;
-}
-.right {
-  display: flex;
-  justify-content: space-between;
-  gap: 2vmax;
-}
-.parent-home {
-  padding-top: 2vmax;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-.home {
-  display: grid;
-  width: 95vw;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 3vmax;
-  justify-content: center;
-}
-.home > img {
-  width: 20vmax;
 }

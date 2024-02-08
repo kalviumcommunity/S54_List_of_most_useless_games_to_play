@@ -1,0 +1,43 @@
+.backg-color {
+  z-index: -2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(24, 36, 63);
+  /* background: linear-gradient(
+    to right,
+    #252528,
+    #252325,
+    #252122,
+    #231f1e,
+    #201e1c,
+    #1f1e1c,
+    #1f1e1b,
+    #1e1e1b,
+    #201f1c,
+    #21211d,
+    #23221e,
+    #25231f
+  ); */
+  background-size: 100% 100%;
+}
+
+.JoyPlay-Container {
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  margin-top: 8vmax;
+  gap: 8vmax;
+}
+.JoyPlay-image {
+  width: 30vmax;
+  margin-left: 6vmax;
+}
+
+.tagline {
+  color: white;
+  font-family: "Riky Vampdator Normal", sans-serif;
+  font-size: 4.5vmax;
+}

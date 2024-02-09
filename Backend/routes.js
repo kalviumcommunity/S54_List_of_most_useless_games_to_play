@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
-
+const router = express.Router()
 const Post = require("./models/post");
 const app = express();
 require('dotenv').config();
@@ -19,19 +19,19 @@ main()
     })
     .catch((err) => console.log("Error Connecting!", err));
 
-app.get("/", async (req, res)=>{
+    router.get("/", async (req, res)=>{
     await Post.find().then((data)=>{returnData = data});
     res.send(returnData);
 })
 
-app.post("/", async (req, res) => {
+router.post("/", async (req, res) => {
     let insertData = new Post(req.body);
     insertData.save()
         .then(() => res.send("Added"))
         .catch((err) => res.status(500).send(err));
 });
 
-app.put("/:title", async (req, res) => {
+router.put("/:title", async (req, res) => {
     const { title } = req.params;
     const newData = req.body.title;
     try {
@@ -48,7 +48,7 @@ app.put("/:title", async (req, res) => {
 });
 
 
-app.delete("/", async(req, res)=>{
+router.delete("/", async(req, res)=>{
     try {
         let toDelete = req.body.title;
         let del = await Post.deleteOne({title:toDelete})
@@ -63,7 +63,4 @@ app.delete("/", async(req, res)=>{
     }
 })
 
-const port = 3000;
-app.listen(port, ()=>{
-    console.log("Successfully connected to ", port);
-})
+module.exports = router

@@ -3,6 +3,8 @@ const mongoose = require("mongoose")
 const Post = require("./models/post")
 const app = express()
 const port = 4001
+const cors = require("cors")
+const router = require("./routes")
 require("dotenv").config()
 
 async function main (){
@@ -83,7 +85,8 @@ main();
 // .catch((err)=>{
 //     console.log(err)
 // })
-
+app.use(cors())
+app.use('/post',router)
 app.get('/ping',(req,res)=>{
     res.send("ping-pong")
 })

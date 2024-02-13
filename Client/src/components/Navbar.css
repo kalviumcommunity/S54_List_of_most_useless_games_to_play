@@ -1,57 +1,50 @@
 .navbar-container {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
   position: fixed;
-  top: 3%;
 }
+
 .navbar {
-  width: 85vmax;
+  width: 100vmax;
   height: 10vmax;
   background-color: #ffffff;
   display: flex;
-  color: whitesmoke;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
-  border-radius: 20px;
+  color: black;
   border: 1px solid rgb(0, 0, 0);
-  padding: 0 2vmax 0 1vmax;
+  padding: 0 8vmax 0 3vmax;
 }
+
 .left-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1vmax;
-  background-color: #ffffff;
 }
+
 .JoyPlay {
   font-family: "Creepster", system-ui;
-  font-weight: 400;
-  font-style: normal;
   font-size: 3vmax;
   letter-spacing: 0.2vmax;
   color: black;
-  background-color: #ffffff;
 }
+
 .JoyPlay span {
   color: #6d0fe0;
-  background-color: #ffffff;
   margin-left: 10px;
 }
+
 .right-nav {
   display: flex;
   justify-content: center;
   gap: 5vmin;
-  background-color: #ffffff;
+  padding-right: 5vmax;
 }
+
 .login,
 .home,
 .about {
   font-size: 1.5vmax;
   font-family: "Creepster", system-ui;
   letter-spacing: 0.2vmax;
-  background-color: #ffffff;
   color: black;
   position: relative;
   text-decoration: none;
@@ -69,18 +62,43 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #6d0fe0; /* Adjust the color as needed */
+  background-color: #6d0fe0;
   transition: width 0.3s ease;
 }
 
 .login:hover,
 .home:hover,
 .about:hover {
-  color: #6d0fe0; /* Adjust the color as needed */
+  color: #6d0fe0;
 }
 
 .login:hover::after,
 .home:hover::after,
 .about:hover::after {
   width: 100%;
+}
+@media screen and (max-width: 767px) {
+  /* Navbar */
+  .navbar {
+    /* Stack items vertically */
+    /* align-items: center; Center items vertically */
+    padding: 16px;
+    padding-right: 85px;
+    height: auto; /* Adjust height to fit content */
+  }
+
+  /* Left navigation items */
+
+  /* Right navigation items */
+  .right-nav {
+    /* flex-direction: column; Stack items vertically */
+    gap: 10px; /* Add gap between items */
+  }
+
+  /* Individual navigation items */
+  .login,
+  .home,
+  .about {
+    font-size: 14px; /* Adjust font size */
+  }
 }

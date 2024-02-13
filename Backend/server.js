@@ -7,6 +7,10 @@ const cors = require("cors")
 const router = require("./routes")
 require("dotenv").config()
 
+app.use(cors())
+
+
+
 async function main (){
     await mongoose.connect(
         process.env.MONGO_KEY

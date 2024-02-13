@@ -6,13 +6,11 @@ import List from "./List";
 const Home = () => {
   return (
     <div>
-      <div className="backg-color">
-        
-      </div>
       <Navbar />
 
-      {/* <Cards/> */}
-      <List/>
+      <div>
+        
+      </div>
     </div>
   );
 };

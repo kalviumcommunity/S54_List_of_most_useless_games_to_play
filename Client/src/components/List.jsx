@@ -3,6 +3,7 @@ import { Grid } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards from "./Card";
+import NewPostForm from "./Form";
 
 const List = () => {
   const [posts, setPosts] = useState([]);
@@ -25,11 +26,11 @@ const List = () => {
           margin={"0vmax 6vmax 0vmax 6vmax"}
           templateColumns="repeat(3, 1fr)"
           gap={10}
-         css={{
+          css={{
             "@media screen and (max-width: 426px)": {
               gridTemplateColumns: "1fr",
             },
-          }} 
+          }}
         >
           {posts.map((e, i) => {
             return <Cards data={posts[i]} />;

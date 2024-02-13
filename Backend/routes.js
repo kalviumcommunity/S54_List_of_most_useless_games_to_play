@@ -5,7 +5,7 @@ const Post = require("./models/post");
 const app = express();
 require('dotenv').config();
 
-app.use(express.json())
+router.use(express.json())
 
 async function main() {
     await mongoose.connect(

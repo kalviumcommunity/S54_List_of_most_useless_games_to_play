@@ -5,7 +5,7 @@ const Post = require("./models/post");
 const app = express();
 require('dotenv').config();
 
-router.use(express.json())
+app.use(express.json())
 
 async function main() {
     await mongoose.connect(
@@ -20,9 +20,10 @@ main()
     .catch((err) => console.log("Error Connecting!", err));
 
     router.get("/", async (req, res)=>{
-        await Post.find().then((data)=>{returnData = data});
-        res.send(returnData);
-    })
+    await Post.find().then((data)=>{returnData = data});
+    res.send(returnData);
+})
+
 router.post("/", async (req, res) => {
     let insertData = new Post(req.body);
     insertData.save()

@@ -17,7 +17,7 @@ const Cards = ({ data }) => {
   console.log(data);
   return (
     <div>
-      <Card zIndex={"-1"} maxW="sm">
+      <Card zIndex={"1"} maxW="sm">
         <CardBody>
           <Flex justifyContent="center">
             <Image
@@ -27,7 +27,7 @@ const Cards = ({ data }) => {
               borderRadius="lg"
               css={{
                 "@media screen and (max-width: 426px)": {
-                    height: "30vmax",
+                  height: "30vmax",
                 },
               }}
             />

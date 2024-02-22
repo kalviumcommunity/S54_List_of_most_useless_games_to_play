@@ -11,10 +11,15 @@ import {
   Button,
   Flex,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { BiLike, BiChat } from "react-icons/bi";
 
 const Cards = ({ data }) => {
   console.log(data);
+  const navigate = useNavigate();
+  const cardClick = () => {
+    navigate(`/list/${data._id}`);
+  };
   return (
     <div>
       <Card zIndex={"1"} maxW="sm">
@@ -23,12 +28,14 @@ const Cards = ({ data }) => {
             <Image
               height={"15vmax"}
               src={data.image}
-              alt="Candy Crush"
+              alt=""
               borderRadius="lg"
+              onClick={cardClick}
               css={{
                 "@media screen and (max-width: 426px)": {
                   height: "30vmax",
                 },
+              
               }}
             />
           </Flex>

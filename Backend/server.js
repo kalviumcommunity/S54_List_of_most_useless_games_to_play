@@ -2,7 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const Post = require("./models/post")
 const app = express()
-const port = 4001
+const port = 5050
 const cors = require("cors")
 const router = require("./routes")
 require("dotenv").config()
@@ -96,7 +96,7 @@ app.get('/ping',(req,res)=>{
 })
 
 app.get('/',(req,res)=>{
-    res.send("path")
+    res.send("Connection created")
 })
 
 app.listen(port,()=>{

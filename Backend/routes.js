@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 const Post = require("./models/post");
+const { postValidation } = require("./utils/postValidation");
 const app = express();
 require("dotenv").config();
 
@@ -17,18 +18,41 @@ main()
   })
   .catch((err) => console.log("Error Connecting!", err));
 
-router.get(
-  "/:id",
-  async (req, res) => {
-    let { id } = req.params;
-    let result = await Post.findById(id);
-    if (result == null) {
-      throw new ExpressError(404, "Post not found..!");
+
+
+  const validatePost = (req, res, next) => {
+    let { error } = postValidation.validate(req.body);
+    if (error) {
+      res.status(404).send(error);
+    } else {
+      next();
     }
-    console.log(result);
-    res.send(result);
+  };
+
+router.get("/", async (req, res) => {
+  await Post.find().then((data) => {
+    returnData = data;
+  });
+  res.send(returnData);
+});
+
+router.get("/:id", async (req, res) => {
+  let { id } = req.params;
+  let result = await Post.findById(id);
+  if (result == null) {
+    throw new ExpressError(404, "Post not found..!");
   }
-);
+  console.log(result);
+  res.send(result);
+});
+
+router.post("/", validatePost,  async (req, res) => {
+  let insertData = new Post(req.body);
+  insertData
+    .save()
+    .then(() => res.send("Added"))
+    .catch((err) => res.status(500).send(err));
+});
 
 router.put("/:id", async (req, res) => {
   try {
@@ -58,7 +82,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).send(error.message);
   }
 });
-
-
 
 module.exports = router;

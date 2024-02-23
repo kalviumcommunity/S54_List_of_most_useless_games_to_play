@@ -1,5 +1,3 @@
-
-
 .JoyPlay-Container {
   width: 100vw;
   height: 75vh;
@@ -17,4 +15,14 @@
   color: white;
   font-family: "Riky Vampdator Normal", sans-serif;
   font-size: 4.5vmax;
+}
+#parent {
+  position: fixed;
+  z-index: 0;
+}
+#parent > img {
+  size: 100%;
+}
+.back{
+  /* background-color: ; */
 }

@@ -23,7 +23,7 @@ export default function NewPostForm() {
   } = useForm();
   // console.log(watch())
   const FormSubmitHandler = (data)=>{
-    axios.post("https://asap-project.onrender.com/post",data).then(()=>{
+    axios.post("https://asap-project.onrender.com/post/",data).then(()=>{
       console.log("ADDED")
       navigate("/list")
     }).catch((err)=>{

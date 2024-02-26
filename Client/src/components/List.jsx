@@ -33,7 +33,7 @@ const List = () => {
           }}
         >
           {posts.map((e, i) => {
-            return <Cards data={posts[i]} />;
+            return <Cards data={posts[i]}  key={i} />;
           })}
         </Grid>
       </div>

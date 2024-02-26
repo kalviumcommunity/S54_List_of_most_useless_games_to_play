@@ -4,8 +4,10 @@ import Navbar from "./components/Navbar";
 import List from "./components/List";
 import NewPostForm from "./components/Form";
 import EditForm from "./components/EditForm";
-import Edit from "./components/Edit"
+import Edit from "./components/Edit";
 import "./App.css";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/form" element={<NewPostForm />} />
           <Route path="/list/:id" element={<Edit />} />
           <Route path="/list/edit/:id" element={<EditForm />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           {/* Add additional routes here */}
         </Routes>
       </div>

@@ -26,8 +26,8 @@ export default function Signup() {
     const id = toast.loading("Signing Up...");
     setTimeout(() => {
       axios
-        .post("http://localhost:5050/users", formData)
-        .then(() => {
+        .post("https://asap-project.onrender.com/users", formData)
+        .then((result) => {
           console.log("ADDED");
           toast.update(id, {
             render: "Signed Up",
@@ -35,6 +35,7 @@ export default function Signup() {
             isLoading: false,
           });
           setCookie("username", formData.username, 365);
+          setCookie("auth-token",result.data,365)
           setLogin(loginCheck())
           setTimeout(() => {
             navigate("/list");

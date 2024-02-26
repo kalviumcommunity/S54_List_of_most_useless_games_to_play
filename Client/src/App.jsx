@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/list" element={<List />} />
-          <Route path="/temp" element={<NewPostForm />} />
+          <Route path="/form" element={<NewPostForm />} />
           <Route path="/list/:id" element={<Edit />} />
           <Route path="/list/edit/:id" element={<EditForm />} />
           {/* Add additional routes here */}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Navbar from "./Navbar";
 import image from "../assets/home-background.jpg";
@@ -12,7 +13,9 @@ const Home = () => {
         <img src={image} alt="" />
       </div>
       <div>
-        <button></button>
+        <Link to="/list">
+          <button id="explore">Explore Games</button>
+          </Link>
       </div>
     </div>
   );

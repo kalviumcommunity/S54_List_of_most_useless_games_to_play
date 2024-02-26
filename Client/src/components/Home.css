@@ -10,19 +10,41 @@
   width: 30vmax;
   margin-left: 6vmax;
 }
-
+body {
+  overflow-x: hidden;
+}
 .tagline {
   color: white;
-  font-family: "Riky Vampdator Normal", sans-serif;
+
   font-size: 4.5vmax;
 }
 #parent {
-  position: fixed;
-  z-index: 0;
+  padding-top: 7vmax;
+  display: flex;
+  justify-content: end;
 }
 #parent > img {
-  size: 100%;
+  width: 88vw;
 }
-.back{
-  /* background-color: ; */
+.back {
+  background: #01112a;
+  height: 100%;
+  width: 100vw;
+}
+#explore {
+  background-color: rgb(254, 137, 6);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+  position: absolute;
+  top: 58%;
+  left: 35%;
+}
+
+#explore:hover {
+  background-color: rgb(255, 180, 94);
 }

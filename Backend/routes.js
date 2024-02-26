@@ -3,10 +3,13 @@ const express = require("express");
 const router = express.Router();
 const Post = require("./models/post");
 const { postValidation } = require("./utils/postValidation");
+const user = express.Router();
+const User = require("./models/user.js");
 const app = express();
 require("dotenv").config();
 
 router.use(express.json());
+user.use(express.json());
 
 async function main() {
   await mongoose.connect(process.env.MONGO_KEY);
@@ -18,16 +21,14 @@ main()
   })
   .catch((err) => console.log("Error Connecting!", err));
 
-
-
-  const validatePost = (req, res, next) => {
-    let { error } = postValidation.validate(req.body);
-    if (error) {
-      res.status(404).send(error);
-    } else {
-      next();
-    }
-  };
+const validatePost = (req, res, next) => {
+  let { error } = postValidation.validate(req.body);
+  if (error) {
+    res.status(404).send(error);
+  } else {
+    next();
+  }
+};
 
 router.get("/", async (req, res) => {
   await Post.find().then((data) => {
@@ -35,6 +36,40 @@ router.get("/", async (req, res) => {
   });
   res.send(returnData);
 });
+
+
+user.get("/", async (req, res) => {
+  await Place.find().then((data) => {
+    returnData = data;
+  });
+  res.send(returnData);
+});
+
+user.post("/", async(req, res)=>{
+  let newData = new User(req.body)
+  await newData.save()
+  res.send("User Created!")
+})
+
+user.post(
+  "/login",async (req, res) => {
+    let { username, password } = req.body;
+    console.log('====================================');
+    console.log(req.body);
+    console.log('====================================');
+    let result = await User.find({ username: username });
+    if (result.length == 0) {
+      throw new Error("User not found!");
+    } else {
+      let savedPassword = result[0].password;
+      if (savedPassword != password) {
+        res.status(401)
+      } else {
+        res.send("LOGGED IN");
+      }
+    }
+  }
+);
 
 router.get("/:id", async (req, res) => {
   let { id } = req.params;
@@ -46,7 +81,7 @@ router.get("/:id", async (req, res) => {
   res.send(result);
 });
 
-router.post("/", validatePost,  async (req, res) => {
+router.post("/", validatePost, async (req, res) => {
   let insertData = new Post(req.body);
   insertData
     .save()
@@ -83,4 +118,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = {router, user};

@@ -6,6 +6,7 @@ const { postValidation } = require("./utils/postValidation");
 const user = express.Router();
 const User = require("./models/user.js");
 const app = express();
+var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 router.use(express.json());
@@ -20,6 +21,20 @@ main()
     console.log("Connection Successful!");
   })
   .catch((err) => console.log("Error Connecting!", err));
+
+const jwtVerify = (req, res, next) => {
+  try {
+    let { authorization } = req.headers;
+    let result = jwt.verify(authorization, process.env.JWT_PASS);
+    console.log(result.username);
+    next();
+  } catch (err) {
+    throw new ExpressError(
+      403,
+      "Not authorised to access this route without correct auth token"
+    );
+  }
+};
 
 const validatePost = (req, res, next) => {
   let { error } = postValidation.validate(req.body);
@@ -37,7 +52,6 @@ router.get("/", async (req, res) => {
   res.send(returnData);
 });
 
-
 user.get("/", async (req, res) => {
   await Place.find().then((data) => {
     returnData = data;
@@ -45,31 +59,34 @@ user.get("/", async (req, res) => {
   res.send(returnData);
 });
 
-user.post("/", async(req, res)=>{
-  let newData = new User(req.body)
-  await newData.save()
-  res.send("User Created!")
-})
+user.post("/", async (req, res) => {
+  let newData = new User(req.body);
+  await newData.save();
+  let token = jwt.sign({ username: req.body.userName }, process.env.JWT_PASS);
+  res.send(token);
+});
 
-user.post(
-  "/login",async (req, res) => {
-    let { username, password } = req.body;
-    console.log('====================================');
-    console.log(req.body);
-    console.log('====================================');
-    let result = await User.find({ username: username });
-    if (result.length == 0) {
-      throw new Error("User not found!");
+user.post("/login", async (req, res) => {
+  let { username, password } = req.body;
+  console.log("====================================");
+  console.log(req.body);
+  console.log("====================================");
+  let result = await User.find({ username: username });
+  if (result.length == 0) {
+    throw new Error("User not found!");
+  } else {
+    let savedPassword = result[0].password;
+    if (savedPassword != password) {
+      res.status(401);
     } else {
-      let savedPassword = result[0].password;
-      if (savedPassword != password) {
-        res.status(401)
-      } else {
-        res.send("LOGGED IN");
-      }
+      let token = jwt.sign(
+        { username: req.body.username },
+        process.env.JWT_PASS
+      );
+      res.send(token);
     }
   }
-);
+});
 
 router.get("/:id", async (req, res) => {
   let { id } = req.params;
@@ -81,7 +98,7 @@ router.get("/:id", async (req, res) => {
   res.send(result);
 });
 
-router.post("/", validatePost, async (req, res) => {
+router.post("/", validatePost,jwtVerify, async (req, res) => {
   let insertData = new Post(req.body);
   insertData
     .save()
@@ -118,4 +135,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = {router, user};
+module.exports = { router, user };

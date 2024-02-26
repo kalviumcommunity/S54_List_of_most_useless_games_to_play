@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -26,8 +26,8 @@ export default function Login() {
     const id = toast.loading("Logging In...");
     setTimeout(() => {
       axios
-        .post("http://localhost:5050/users/login", formData)
-        .then(() => {
+        .post("https://asap-project.onrender.com/users/login", formData)
+        .then((result) => {
           console.log("ADDED");
           toast.update(id, {
             render: "Logged In!",
@@ -35,6 +35,7 @@ export default function Login() {
             isLoading: false,
           });
           setCookie("username", formData.username, 365);
+          setCookie("auth-token", result.data, 365);
           setLogin(loginCheck());
           setTimeout(() => {
             navigate("/list");

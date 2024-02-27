@@ -53,7 +53,7 @@ router.get("/", async (req, res) => {
 });
 
 user.get("/", async (req, res) => {
-  await Place.find().then((data) => {
+  await User.find().then((data) => {
     returnData = data;
   });
   res.send(returnData);
@@ -98,7 +98,28 @@ router.get("/:id", async (req, res) => {
   res.send(result);
 });
 
-router.post("/", validatePost,jwtVerify, async (req, res) => {
+router.get("/user/:user", async (req, res) => {
+  try {
+    let { user } = req.params;
+    let result = await Post.find({ user: user });
+
+    // Check if result array is empty
+    if (result.length === 0) {
+      // If no posts found, send 404 response
+      res.status(404).send("No posts associated with this user found");
+    } else {
+      // If posts found, send the result
+      res.send(result);
+      console.log("Res", result);
+    }
+  } catch (err) {
+    // Handle other errors
+    console.log(err);
+    res.status(500).send("Internal server error");
+  }
+});
+
+router.post("/", validatePost, jwtVerify, async (req, res) => {
   let insertData = new Post(req.body);
   insertData
     .save()

@@ -37,7 +37,10 @@ const Navbar = () => {
         </div>
         <div className="right-nav">
           <Link to="/form">Add a Post</Link>
-          {loginBtn()}
+          
+          <Link to={"/user"}  className="User"
+            >Users</Link>
+            {loginBtn()}
         </div>
       </div>
       <div></div>

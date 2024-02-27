@@ -24,7 +24,7 @@
 
 .det-image > img {
   border-radius: 10px;
-  width: 35vw;
+  /* width: 35vw; */
   height: 40vh;
 }
 
@@ -40,17 +40,13 @@
   font-size: 3vmax;
   text-decoration: underline;
 }
-.det-location {
-  font-size: 1.5vmax;
-}
-.det-description {
-  font-size: 2vmin;
-}
 .det-button {
   width: 40vmin;
   display: flex;
   justify-content: center;
   justify-content: space-between;
+  margin-top: 5vmax;
+  margin-bottom: 5vmax;
 }
 .button_Edit {
   font-family: "Creepster", system-ui;

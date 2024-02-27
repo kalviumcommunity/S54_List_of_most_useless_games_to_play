@@ -8,6 +8,8 @@ import Edit from "./components/Edit";
 import "./App.css";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import User from "./components/User";
+import UserPosts from "./components/UserPost";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/list/edit/:id" element={<EditForm />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/post/:user" element={<UserPosts />} />
           {/* Add additional routes here */}
         </Routes>
       </div>

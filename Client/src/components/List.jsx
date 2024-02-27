@@ -21,7 +21,7 @@ const List = () => {
 
   return (
     <div>
-      <div style={{ paddingTop: "13vmax" }}>
+      <div style={{ paddingTop: "13vmax" ,backgroundColor:"rgb(24, 36, 63)"}}>
         <Grid
           margin={"0vmax 6vmax 0vmax 6vmax"}
           templateColumns="repeat(3, 1fr)"

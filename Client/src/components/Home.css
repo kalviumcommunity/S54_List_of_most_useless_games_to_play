@@ -28,8 +28,8 @@ body {
 }
 .back {
   background: #01112a;
-  height: 100%;
-  width: 100vw;
+  height: 130%;
+  width: 100%;
 }
 #explore {
   background-color: rgb(254, 137, 6);
@@ -41,7 +41,7 @@ body {
   transition: background-color 0.3s ease;
   z-index: 1;
   position: absolute;
-  top: 58%;
+  top: 68%;
   left: 35%;
 }
 
